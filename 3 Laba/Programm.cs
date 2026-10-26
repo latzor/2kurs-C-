@@ -19,16 +19,19 @@ namespace lab3csharp
             string rawText = File.ReadAllText(pathIn);
             Text text = new Text(rawText);
 
+            Console.WriteLine("--- Исходный текст: ---");
             Console.WriteLine(text.ToString());
             Console.WriteLine("\n\n------------------------------------\n\n");
 
+            Console.WriteLine("--- Предложения по возрастанию числа слов: ---");
             Console.WriteLine(text.SortPoWord());
             Console.WriteLine("\n\n------------------------------------\n\n");
 
+            Console.WriteLine("--- Предложения по возрастанию длины строки: ---");
             Console.WriteLine(text.SortPoSize());
             Console.WriteLine("\n\n------------------------------------\n\n");
 
-            Console.Write("Задайте длину слова: ");
+            Console.Write("Задайте длину слова для поиска в вопросительных предложениях: ");
             if (int.TryParse(Console.ReadLine(), out int dlina))
             {
                 Console.WriteLine();
@@ -68,7 +71,7 @@ namespace lab3csharp
             }
 
             Console.WriteLine("\n\n------------------------------------\n\n");
-            Console.WriteLine("\nпосле удаления стоп слов");
+            Console.WriteLine("\nТекст после удаления стоп-слов:");
             text.RemoveStopWords(text.RU);
             text.RemoveStopWords(text.EN);
             Console.WriteLine(text.ToString());
@@ -78,7 +81,8 @@ namespace lab3csharp
             text.ExportToXml(xmlPath);
             Console.WriteLine($"Объект успешно экспортирован в XML-файл: {xmlPath}");
 
-            Console.WriteLine("\nконкардес");
+            Console.WriteLine("\n\n------------------------------------\n\n");
+            Console.WriteLine("--- Сгенерированный Конкорданс текста: ---");
             Console.WriteLine(text.BuildConcordance());
         }
     }
